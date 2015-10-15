@@ -2,14 +2,13 @@
 
 pid=/var/run/pythonApp.pid
 name=pythonApp
-prog=./python main.py
 
 case $1 in
     start)
-        /sbin/start-stop-daemon --start -b --oknodo --name "$name" -m --pidfile "$pid" --startas "$prog" --daemon
+        /sbin/start-stop-daemon --start -b -g www -u www --oknodo -m --pidfile "$pid" -d "/var/app/" --exec "/usr/bin/python" -- "main.py"
         ;;
     stop)
-        /sbin/start-stop-daemon --stop --oknodo --name "$name" --pidfile "$pid" --retry=TERM/5/KILL/1
+        /sbin/start-stop-daemon --stop --oknodo --pidfile "$pid" --retry=TERM/5/KILL/1
         ;;
     restart)
         ;;
