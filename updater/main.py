@@ -1,4 +1,4 @@
-#!/bin/usr/python2.7
+#!/usr/bin/python2.7
 __author__ = 'BrennanVanderLaan'
 
 import tornado
